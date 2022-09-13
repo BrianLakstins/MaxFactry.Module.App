@@ -1,0 +1,45 @@
+﻿@model MaxFactry.Module.App.PresentationLayer.MaxAppViewModel
+
+@{
+    ViewBag.MetaKeywords = "cms, efactory, maxfactry";
+    ViewBag.MetaDescription = "Portal home page for eFactory Solutions Web App platform based on MaxFactry framework.";
+    ViewBag.HeadTitle = "eFS Web App Portal - ";
+}
+
+<h1>eFS Web App Portal</h1>
+
+<div>Welcome to the eFactory Solutions Web App Management System Portal</div>
+
+<div>An "eFactory Solutions Web App" is and Internet hosted software application that runs on the eFactory Solutions web application platform.</div>
+
+<div>Each Web App has certain built in functionality:</div>
+<ul>
+    <li>Security.  Users are specific for each Web App.  User login and management only occur over encrypted connections.</li>
+    <li>Custom Design.  The layout and design of each page of the Web App can be customized.</li>
+    <li>Custom Content.  The content portions of the Web App can be managed.</li>
+</ul>
+
+<div>The current web app being used can be selected from the list below.</div>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Select Web App</legend>
+        @Html.EditorFor(m => m.Id, additionalViewData: new { LabelColumnWidth = 2, InputControl = Html.DropDownListFor(m => m.Id, new SelectList(Model.GetSortedList(), "Id", "Name", Model.Id), htmlAttributes: new { Class = "form-control" }) })
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="input-group">
+                        <input name="uoProcess" type="submit" value="Change" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div><a href="@Url.RouteUrl("MaxAppRoute", routeValues: new { MaxAppId = Model.Id })">Current App Url</a></div>
+    </div>
+
+</div>

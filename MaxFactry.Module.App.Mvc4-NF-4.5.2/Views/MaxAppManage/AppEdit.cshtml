@@ -1,0 +1,47 @@
+﻿@model MaxFactry.Module.App.PresentationLayer.MaxAppViewModel
+
+<h1>App Management</h1>
+<div>@ViewBag.Message</div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+    
+        if (!String.IsNullOrEmpty(Model.Id))
+        {
+        <fieldset>
+            <legend>Edit App</legend>
+            @Html.DisplayFor(m => m.Id, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.Name, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.AnalyticsId, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.GTMId, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.ThemeName, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.Title, additionalViewData: new { LabelColumnWidth = 2 })
+            @Html.EditorFor(m => m.Config, additionalViewData: new { LabelColumnWidth = 2, InputControl = Html.TextAreaFor(m => m.Config) })
+            @Html.EditorFor(m => m.AttributeIndexText, additionalViewData: new { LabelColumnWidth = 2, InputControl = Html.TextAreaFor(m => m.AttributeIndexText) })
+            @Html.EditorFor(m => m.Active, additionalViewData: new { LabelColumnWidth = 2, IsCheckBox = "true" })
+            <div class="row">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="input-group">
+                        <button type="submit" name="uoProcess" value="@MaxManageController.ProcessDelete" onclick="return (confirm('are you sure?'));" class="btn btn-danger">Delete</button>
+                        <button type="submit" name="uoProcess" value="@MaxManageController.ProcessCancel" class="btn btn-default">Cancel</button>
+                        <button type="submit" name="uoProcess" value="@MaxManageController.ProcessDone" class="btn btn-default">Done</button>
+                        <button type="submit" name="uoProcess" value="@MaxManageController.ProcessSave" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div></div>
+            @Html.HiddenFor(m => m.Id)
+        </fieldset>        
+        }
+
+    }
+@section ScriptSection
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tooltipactive').tooltip({ container: 'body' });
+        });
+    </script>
+
+}
