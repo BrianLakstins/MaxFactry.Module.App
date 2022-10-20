@@ -30,14 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MaxFactry.Base-NF-2.0, Version=1.0.2.2, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.2.2\lib\net20\MaxFactry.Base-NF-2.0.dll</HintPath>
+    <Reference Include="MaxFactry.Base-NF-2.0, Version=1.0.3.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.3\lib\net20\MaxFactry.Base-NF-2.0.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.Core-NF-2.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.2.2\lib\net20\MaxFactry.Core-NF-2.0.dll</HintPath>
+    <Reference Include="MaxFactry.Core-NF-2.0, Version=1.0.3.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Core.1.0.3\lib\net20\MaxFactry.Core-NF-2.0.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.General-NF-2.0, Version=1.0.2.2, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.General.1.0.2.2\lib\net20\MaxFactry.General-NF-2.0.dll</HintPath>
+    <Reference Include="MaxFactry.General-NF-2.0, Version=1.0.3.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.1.0.3\lib\net20\MaxFactry.General-NF-2.0.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

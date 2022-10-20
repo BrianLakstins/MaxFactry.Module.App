@@ -1,5 +1,6 @@
 rem Package the library for Nuget
 copy ..\MaxFactry.Module.App-NF-4.5.2\bin\Release\MaxFactry.Module.App*.dll lib\App\net452\
+copy ..\MaxFactry.Module.App-NF-2.0\bin\Release\MaxFactry.Module.App*.dll lib\App\net20\
 
 c:\install\nuget\nuget.exe pack MaxFactry.Module.App.nuspec -OutputDirectory "packages" -IncludeReferencedProjects -properties Configuration=Release 
 
