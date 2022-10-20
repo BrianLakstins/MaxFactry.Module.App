@@ -400,6 +400,8 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
                         MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopePersistent, lsSentKey, "true");
                     }
                 }
+
+                MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, MaxFactryLibrary.MaxStorageKeyName, null);
             }
 
             return lnR;
