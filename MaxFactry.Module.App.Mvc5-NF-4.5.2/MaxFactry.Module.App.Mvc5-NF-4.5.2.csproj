@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\_nuget\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\_nuget\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D7A207F-582A-4BC0-8C42-CFA81578697E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MaxFactry.Module.App.Mvc5</RootNamespace>
+    <AssemblyName>MaxFactry.Module.App.Mvc5-NF-4.5.2</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;net2;net4_52;mvc5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;net2;net4_52;mvc5</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxFactry.Base\DataLayer\Library\Provider\MaxDataLibraryAppProvider.cs">
+      <Link>App_Src\MaxFactry.Base\DataLayer\Library\Provider\MaxDataLibraryAppProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxFactry.Core.Provider\MaxConfigurationLibraryAppProvider.cs">
+      <Link>App_Src\MaxFactry.Core.Provider\MaxConfigurationLibraryAppProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxFactry.Module.Core.AspNet\PresentationLayer\Library\Provider\MaxOwinLibraryAppProvider.cs">
+      <Link>App_Src\MaxFactry.Module.Core.AspNet\PresentationLayer\Library\Provider\MaxOwinLibraryAppProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxStartup.cs">
+      <Link>App_Src\MaxStartup.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\Controllers\MaxAppController.cs">
+      <Link>App_Src\PresentationLayer\Controllers\MaxAppController.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\Controllers\MaxAppManageController.cs">
+      <Link>App_Src\PresentationLayer\Controllers\MaxAppManageController.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\Controllers\MaxAppManagePartialController.cs">
+      <Link>App_Src\PresentationLayer\Controllers\MaxAppManagePartialController.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\Handler\MaxAppHandler.cs">
+      <Link>App_Src\PresentationLayer\Handler\MaxAppHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxAppLibraryAppModuleProvider.cs">
+      <Link>App_Src\MaxAppLibraryAppModuleProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\MaxHttpApplication.cs">
+      <Link>App_Src\MaxHttpApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\MaxHtmlHelperAppExtension.cs">
+      <Link>App_Src\PresentationLayer\MaxHtmlHelperAppExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\BusinessLayer\Entity\MaxAppUrlEntity.cs">
+      <Link>App_Src\BusinessLayer\Entity\MaxAppUrlEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\DataLayer\DataModel\MaxAppUrlDataModel.cs">
+      <Link>App_Src\DataLayer\DataModel\MaxAppUrlDataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\App_Src\PresentationLayer\Models\MaxAppUrlViewModel.cs">
+      <Link>App_Src\PresentationLayer\Models\MaxAppUrlViewModel.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxApp\Index.cshtml">
+      <Link>Views\MaxApp\Index.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\_ViewStart.cshtml">
+      <Link>Views\MaxAppManage\_ViewStart.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\App.cshtml">
+      <Link>Views\MaxAppManage\App.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\AppEdit.cshtml">
+      <Link>Views\MaxAppManage\AppEdit.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\AppUrl.cshtml">
+      <Link>Views\MaxAppManage\AppUrl.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\AppUrlEdit.cshtml">
+      <Link>Views\MaxAppManage\AppUrlEdit.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManage\Index.cshtml">
+      <Link>Views\MaxAppManage\Index.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\MaxAppManagePartial\Content\_PartialNavLinkList.cshtml">
+      <Link>Views\MaxAppManagePartial\Content\_PartialNavLinkList.cshtml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+  </ItemGroup>
+  <ItemGroup>
+	  <Content Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\Web.config">
+		  <Link>Views\Web.config</Link>
+	  </Content>
+    <Content Include="MaxFactry.pfx" />
+    <Content Include="MaxFactry.snk" />
+    <Content Include="..\MaxFactry.Module.App.Mvc4-NF-4.5.2\Views\Shared\MaxTheme\Default\_Layout.cshtml">
+		<Link>Views\Shared\MaxTheme\Default\_Layout.cshtml</Link>
+	</Content>
+    <Content Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Fizzler, Version=1.1.21209.0, Culture=neutral, PublicKeyToken=4ebff4844e382110, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Fizzler.1.1.0\lib\net35\Fizzler.dll</HintPath>
+    </Reference>
+    <Reference Include="Fizzler.Systems.HtmlAgilityPack, Version=1.1.21209.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Fizzler.Systems.HtmlAgilityPack.1.1.1\lib\net35\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.Base-NF-4.5.2, Version=1.0.13.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.13\lib\net452\MaxFactry.Base-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.Core-NF-4.5.2, Version=1.0.6.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Core.1.0.6\lib\net452\MaxFactry.Core-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.General-NF-4.5.2, Version=1.0.10.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.1.0.11\lib\net452\MaxFactry.General-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.General.AspNet-NF-4.5.2, Version=1.0.10.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.1.0.11\lib\net452\MaxFactry.General.AspNet-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.General.AspNet.IIS-NF-4.5.2, Version=1.0.10.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.1.0.11\lib\net452\MaxFactry.General.AspNet.IIS-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2, Version=1.0.10.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.Mvc5.1.0.11\lib\net452\MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaxFactry.Module.App-NF-4.5.2\MaxFactry.Module.App-NF-4.5.2.csproj">
+      <Project>{a90db255-a762-4ddf-897f-6ef99018d37d}</Project>
+      <Name>MaxFactry.Module.App-NF-4.5.2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59055</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59055/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\_nuget\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\_nuget\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\_nuget\StrongNamer.0.2.5\build\StrongNamer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\_nuget\StrongNamer.0.2.5\build\StrongNamer.targets'))" />
+  </Target>
+  <Import Project="..\..\_nuget\StrongNamer.0.2.5\build\StrongNamer.targets" Condition="Exists('..\..\_nuget\StrongNamer.0.2.5\build\StrongNamer.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

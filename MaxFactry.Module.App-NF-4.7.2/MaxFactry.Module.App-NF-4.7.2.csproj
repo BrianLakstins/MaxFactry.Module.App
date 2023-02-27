@@ -30,54 +30,54 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-	<PropertyGroup>
-		<SignAssembly>true</SignAssembly>
-	</PropertyGroup>
-	<PropertyGroup>
-		<AssemblyOriginatorKeyFile>MaxFactry.snk</AssemblyOriginatorKeyFile>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="System" />
-		<Reference Include="System.ComponentModel.DataAnnotations" />
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppEntity.cs">
-			<Link>BusinessLayer\Entity\MaxAppEntity.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppIdEntity.cs">
-			<Link>BusinessLayer\Entity\MaxAppIdEntity.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppDataModel.cs">
-			<Link>DataLayer\DataModel\MaxAppDataModel.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppIdDataModel.cs">
-			<Link>DataLayer\DataModel\MaxAppIdDataModel.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs">
-			<Link>DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\MaxAppRepository.cs">
-			<Link>DataLayer\Repository\MaxAppRepository.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs">
-			<Link>DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\MaxStartup.cs">
-			<Link>MaxStartup.cs</Link>
-		</Compile>
-		<Compile Include="..\MaxFactry.Module.App-NF-2.0\PresentationLayer\Models\MaxAppViewModel.cs">
-			<Link>PresentationLayer\Models\MaxAppViewModel.cs</Link>
-		</Compile>
-		<Compile Include="Properties\AssemblyInfo.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="MaxFactry.pfx" />
-		<None Include="MaxFactry.snk" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="MaxFactry.General">
-			<Version>1.0.10</Version>
-		</PackageReference>
-	</ItemGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>MaxFactry.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppEntity.cs">
+      <Link>BusinessLayer\Entity\MaxAppEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppIdEntity.cs">
+      <Link>BusinessLayer\Entity\MaxAppIdEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppDataModel.cs">
+      <Link>DataLayer\DataModel\MaxAppDataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppIdDataModel.cs">
+      <Link>DataLayer\DataModel\MaxAppIdDataModel.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs">
+      <Link>DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\MaxAppRepository.cs">
+      <Link>DataLayer\Repository\MaxAppRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs">
+      <Link>DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\MaxStartup.cs">
+      <Link>MaxStartup.cs</Link>
+    </Compile>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\PresentationLayer\Models\MaxAppViewModel.cs">
+      <Link>PresentationLayer\Models\MaxAppViewModel.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MaxFactry.pfx" />
+    <None Include="MaxFactry.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MaxFactry.General">
+      <Version>1.0.11</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
