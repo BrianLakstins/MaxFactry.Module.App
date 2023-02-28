@@ -7,7 +7,7 @@
     <ProjectGuid>{A898C289-0403-4429-9637-03699422354E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MaxFactry.Module.App_NF_2._0</RootNamespace>
+    <RootNamespace>MaxFactry.Module.App</RootNamespace>
     <AssemblyName>MaxFactry.Module.App-NF-2.0</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>MaxFactry.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -48,8 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MaxFactry.General">
-      <Version>1.0.9</Version>
+      <Version>1.0.12</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MaxFactry.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MaxFactry.Module.App</RootNamespace>
+	  <Version>1.0.6</Version>
+	  <AssemblyVersion>1.0.6</AssemblyVersion>
+	  <FileVersion>2023.02.27.01</FileVersion>
+	  <SignAssembly>True</SignAssembly>
+	  <AssemblyOriginatorKeyFile>MaxFactry.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppEntity.cs" Link="BusinessLayer\Entity\MaxAppEntity.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\BusinessLayer\Entity\MaxAppIdEntity.cs" Link="BusinessLayer\Entity\MaxAppIdEntity.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppDataModel.cs" Link="DataLayer\DataModel\MaxAppDataModel.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\DataModel\MaxAppIdDataModel.cs" Link="DataLayer\DataModel\MaxAppIdDataModel.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs" Link="DataLayer\Repository\Interface\IMaxAppRepositoryProvider.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\MaxAppRepository.cs" Link="DataLayer\Repository\MaxAppRepository.cs" />
+    <Compile Include="..\MaxFactry.Module.App-NF-2.0\DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs" Link="DataLayer\Repository\Provider\MaxAppRepositoryDefaultProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BusinessLayer\Entity\" />
+    <Folder Include="DataLayer\DataModel\" />
+    <Folder Include="DataLayer\Repository\Interface\" />
+    <Folder Include="DataLayer\Repository\Provider\" />
+    <Folder Include="PresentationLayer\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaxFactry.General" Version="1.0.12" />
+  </ItemGroup>
+
+</Project>

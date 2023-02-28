@@ -70,12 +70,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MaxFactry.pfx" />
     <None Include="MaxFactry.snk" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MaxFactry.General">
-      <Version>1.0.9</Version>
+      <Version>1.0.12</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
