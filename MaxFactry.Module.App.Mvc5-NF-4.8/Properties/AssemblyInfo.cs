@@ -40,13 +40,13 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 #if DEBUG
-[assembly: AssemblyTitle("Debug - MaxFactry App Module Mvc5 .Net 4.7.2")]
-[assembly: AssemblyDescription("Debug - MaxFactry App Module Mvc5 Library .Net 4.7.2")]
-[assembly: AssemblyProduct("Debug - MaxFactry App Module Mvc5 Library .Net 4.7.2")]
+[assembly: AssemblyTitle("Debug - MaxFactry App Module Mvc5 .Net 4.8")]
+[assembly: AssemblyDescription("Debug - MaxFactry App Module Mvc5 Library .Net 4.8")]
+[assembly: AssemblyProduct("Debug - MaxFactry App Module Mvc5 Library .Net 4.8")]
 #else
-[assembly: AssemblyTitle("MaxFactry App Module Mvc5 .Net 4.7.2")]
-[assembly: AssemblyDescription("MaxFactry App Module Mvc5 Library .Net 4.7.2")]
-[assembly: AssemblyProduct("MaxFactry App Module Mvc5 Library .Net 4.7.2")]
+[assembly: AssemblyTitle("MaxFactry App Module Mvc5 .Net 4.8")]
+[assembly: AssemblyDescription("MaxFactry App Module Mvc5 Library .Net 4.8")]
+[assembly: AssemblyProduct("MaxFactry App Module Mvc5 Library .Net 4.8")]
 #endif
 
 [assembly: AssemblyConfiguration("")]
