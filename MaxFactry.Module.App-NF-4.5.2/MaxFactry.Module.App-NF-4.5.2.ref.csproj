@@ -70,7 +70,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MaxFactry.pfx" />
     <None Include="MaxFactry.snk" />
   </ItemGroup>
   <ItemGroup>

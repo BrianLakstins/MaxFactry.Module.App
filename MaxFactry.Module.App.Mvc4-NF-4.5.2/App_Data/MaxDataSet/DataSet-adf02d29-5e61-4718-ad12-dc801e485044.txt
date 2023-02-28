@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-16"?>
+<DataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="MaxApp">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="AlternateId" type="xs:string" minOccurs="0" />
+                <xs:element name="AnalyticsId" type="xs:string" minOccurs="0" />
+                <xs:element name="AttributeIndex" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="Config" type="xs:string" minOccurs="0" />
+                <xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Extension" type="xs:base64Binary" minOccurs="0" />
+                <xs:element name="GTMId" type="xs:string" minOccurs="0" />
+                <xs:element name="Id" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" />
+                <xs:element name="IsActive" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IsDeleted" type="xs:boolean" minOccurs="0" />
+                <xs:element name="LastUpdateDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="OptionFlagList" type="xs:long" minOccurs="0" />
+                <xs:element name="OptionList" type="xs:long" minOccurs="0" />
+                <xs:element name="ThemeName" type="xs:string" minOccurs="0" />
+                <xs:element name="Title" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//MaxApp" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+    <NewDataSet>
+      <MaxApp diffgr:id="MaxApp1" msdata:rowOrder="0" diffgr:hasChanges="inserted">
+        <CreatedDate>2023-02-28T18:15:12.5736627-05:00</CreatedDate>
+        <Id>adf02d29-5e61-4718-ad12-dc801e485044</Id>
+        <IsActive>true</IsActive>
+        <IsDeleted>false</IsDeleted>
+        <LastUpdateDate>2023-02-28T18:15:12.5726515-05:00</LastUpdateDate>
+        <Name>Primary</Name>
+        <OptionFlagList>0</OptionFlagList>
+      </MaxApp>
+    </NewDataSet>
+  </diffgr:diffgram>
+</DataSet>
