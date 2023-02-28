@@ -11,19 +11,19 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>App library for use in MaxFactry Framework Asp.Net applications on IIS using Mvc4</description>
 		<releaseNotes></releaseNotes>
-		<copyright>Copyright © Brian A. Lakstins (http://www.lakstins.com/brian/)</copyright>
+		<copyright>Copyright Â© Brian A. Lakstins (http://www.lakstins.com/brian/)</copyright>
 		<tags></tags>
 		<dependencies>
 			<group targetFramework="net452">
-				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.11" />
+				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.12" />
 				<dependency id="MaxFactry.Module.App" version="1.0.6" />
 			</group>
 			<group targetFramework="net472">
-				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.11" />
+				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.12" />
 				<dependency id="MaxFactry.Module.App" version="1.0.6" />
 			</group>
 			<group targetFramework="net48">
-				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.11" />
+				<dependency id="MaxFactry.General.AspNet.IIS.Mvc5" version="1.0.12" />
 				<dependency id="MaxFactry.Module.App" version="1.0.6" />
 			</group>
 		</dependencies>
