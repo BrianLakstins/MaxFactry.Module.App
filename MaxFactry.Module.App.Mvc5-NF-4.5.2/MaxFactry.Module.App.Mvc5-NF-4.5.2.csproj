@@ -152,29 +152,23 @@
     <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\..\_nuget\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.Base-NF-4.5.2, Version=1.0.15.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.15\lib\net452\MaxFactry.Base-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.Base-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Base.1.0.20\lib\net452\MaxFactry.Base-NF-4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.Core-NF-4.5.2, Version=1.0.7.1, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.Core.1.0.7.1\lib\net452\MaxFactry.Core-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.Core-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.Core.1.0.20\lib\net452\MaxFactry.Core-NF-4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.General-NF-4.5.2, Version=1.0.12.3, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.General.1.0.12\lib\net452\MaxFactry.General-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.General-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.1.0.20\lib\net452\MaxFactry.General-NF-4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.General.AspNet-NF-4.5.2, Version=1.0.12.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.1.0.12\lib\net452\MaxFactry.General.AspNet-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.General.AspNet-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.1.0.20\lib\net452\MaxFactry.General.AspNet-NF-4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.General.AspNet.IIS-NF-4.5.2, Version=1.0.12.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.1.0.12\lib\net452\MaxFactry.General.AspNet.IIS-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.General.AspNet.IIS-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.1.0.20\lib\net452\MaxFactry.General.AspNet.IIS-NF-4.5.2.dll</HintPath>
     </Reference>
-    <Reference Include="MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2, Version=1.0.12.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.Mvc5.1.0.12\lib\net452\MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2, Version=1.0.20.0, Culture=neutral, PublicKeyToken=fbbc3eafbb4c95f8, processorArchitecture=MSIL">
+      <HintPath>..\..\_nuget\MaxFactry.General.AspNet.IIS.Mvc5.1.0.20\lib\net452\MaxFactry.General.AspNet.IIS.Mvc5-NF-4.5.2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -184,7 +178,7 @@
       <HintPath>..\..\_nuget\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\_nuget\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\_nuget\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\..\_nuget\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -235,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="packages.nuget.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaxFactry.Module.App-NF-4.5.2\MaxFactry.Module.App-NF-4.5.2.csproj">
