@@ -1,5 +1,6 @@
 ﻿# Introduction 
 This project is for the App Module to integrate with an ASP.NET MVC4 user interface
+This module adds support for multiple web sites with separate storage keys to run under the same IIS web site.
 
 #Nuget package information
 Most packages are limited to the current version and should not be upgraded because they support the MVC4 nature of the application or the next version has breaking changes

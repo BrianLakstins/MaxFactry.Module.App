@@ -45,6 +45,8 @@ namespace MaxFactry.Module.App.Mvc4
     using MaxFactry.Core;
     using MaxFactry.Base.DataLayer;
     using MaxFactry.Module.App.Mvc4.PresentationLayer;
+    using MaxFactry.Base.BusinessLayer;
+    using MaxFactry.Module.App.BusinessLayer;
 
     public class MaxStartup : MaxFactry.Base.MaxStartup
     {
@@ -65,20 +67,22 @@ namespace MaxFactry.Module.App.Mvc4
             }
         }
 
-        public override void RegisterProviders()
-        {
-            MaxFactry.Module.App.MaxStartup.Instance.RegisterProviders();
-            MaxFactry.General.AspNet.PresentationLayer.MaxOwinLibrary.Instance.ProviderSet(
-                typeof(MaxFactry.General.AspNet.PresentationLayer.Provider.MaxOwinLibraryAppProvider));
-            //// Configure provider for MaxConfigurationLibrary
-            MaxConfigurationLibrary.Instance.ProviderSet(
-                typeof(MaxFactry.Core.Provider.MaxConfigurationLibraryAppProvider));
-            MaxDataLibrary.Instance.ProviderSet(typeof(MaxFactry.Base.DataLayer.Provider.MaxDataLibraryAppProvider));
-        }
-
         public override void SetProviderConfiguration(MaxIndex loConfig)
         {
             MaxFactry.Module.App.MaxStartup.Instance.SetProviderConfiguration(loConfig);
+        }
+
+        public override void RegisterProviders()
+        {
+            MaxFactry.Module.App.MaxStartup.Instance.RegisterProviders();
+            //// Override the Owin library provider
+            MaxFactry.General.AspNet.PresentationLayer.MaxOwinLibrary.Instance.ProviderSet(
+                typeof(MaxFactry.General.AspNet.PresentationLayer.Provider.MaxOwinLibraryAppProvider));
+            //// Override the Configuration library provider
+            MaxConfigurationLibrary.Instance.ProviderSet(
+                typeof(MaxFactry.Core.Provider.MaxConfigurationLibraryAppProvider));
+            //// Override the Data library provider
+            MaxDataLibrary.Instance.ProviderSet(typeof(MaxFactry.Base.DataLayer.Provider.MaxDataLibraryAppProvider));
         }
 
         public override void ApplicationStartup()
@@ -103,6 +107,29 @@ namespace MaxFactry.Module.App.Mvc4
             );
 
             RouteTable.Routes.Add("MaxAppHandlerRoute", new Route("a/{MaxAppId}", new MaxAppHandler()));
+
+            string lsDefaultId = MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeApplication, MaxFactryLibrary.MaxStorageKeyName) as string;
+            MaxFactry.General.AspNet.IIS.Mvc4.MaxAppLibrary.AddValidStorageKey(lsDefaultId);
+            Guid loId = new Guid(lsDefaultId);
+            MaxEntityList loList = MaxAppEntity.Create().LoadAllCache();
+            bool lbFound = false;
+            for (int lnL = 0; lnL < loList.Count; lnL++)
+            {
+                MaxAppEntity loAppEntity = loList[lnL] as MaxAppEntity;
+                MaxFactry.General.AspNet.IIS.Mvc4.MaxAppLibrary.AddValidStorageKey(loAppEntity.Id.ToString());
+                if (loAppEntity.Id.Equals(loId))
+                {
+                    lbFound = true;
+                }
+            }
+
+            if (!lbFound)
+            {
+                MaxAppEntity loAppEntity = MaxAppEntity.Create();
+                loAppEntity.Name = "Primary";
+                loAppEntity.IsActive = true;
+                loAppEntity.Insert(loId);
+            }
         }
     }
 }
