@@ -30,15 +30,14 @@
 // <change date="7/5/2015" author="Brian A. Lakstins" description="Initial creation">
 // <change date="5/18/2016" author="Brian A. Lakstins" description="Add test configuration">
 // <change date="6/5/2020" author="Brian A. Lakstins" description="Remove test configuration because it's in base class">
+// <change date="7/25/2023" author="Brian A. Lakstins" description="Updated for change to MaxAppLibrary">
 // </changelog>
 #endregion
 
 namespace MaxFactry.Module.App.Mvc4
 {
     using System;
-    using System.Web;
     using MaxFactry.Core;
-    using MaxFactry.Module.App.PresentationLayer;
 
     /// <summary>
     /// Base application for Mvc4 based web applications.
@@ -80,12 +79,11 @@ namespace MaxFactry.Module.App.Mvc4
             this.PreRequestHandlerExecute += (new EventHandler(MaxHttpApplication.ApplicationPreRequestHandlerExecute));
         }
 
-
-
         protected void Application_Start(object sender, EventArgs e)
         {
-            MaxIndex loConfig = this.GetConfig();
-            this.Application_Start_Handler(sender, e, typeof(MaxAppLibraryAppModuleProvider), loConfig);
+            MaxFactry.General.AspNet.IIS.Mvc4.MaxAppLibrary.Start(typeof(MaxAppLibraryAppModuleProvider));
+            MaxIndex loConfig = MaxFactry.General.AspNet.IIS.Mvc4.MaxAppLibrary.GetConfig();
+            this.Application_Start_Handler(sender, e, loConfig);
         }
 
         protected void Session_Start(object sender, EventArgs e)
