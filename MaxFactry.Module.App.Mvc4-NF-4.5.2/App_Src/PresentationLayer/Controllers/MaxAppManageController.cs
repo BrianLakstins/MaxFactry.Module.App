@@ -31,6 +31,7 @@
 // <change date="6/10/2014" author="Brian A. Lakstins" description="Redirect to / instead of home controller.">
 // <change date="6/19/2014" author="Brian A. Lakstins" description="Add a model and move code to model.">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
@@ -54,7 +55,7 @@ namespace MaxFactry.Module.App.Mvc4.PresentationLayer
         [AllowAnonymous]
         public ActionResult Index()
         {
-            MaxAppViewModel loModel = new MaxAppViewModel(MaxFactry.Base.DataLayer.MaxDataLibrary.GetStorageKey(null));
+            MaxAppViewModel loModel = new MaxAppViewModel(MaxFactry.Base.DataLayer.Library.MaxDataLibrary.GetStorageKey(null));
             return View(loModel);
         }
 

@@ -29,10 +29,11 @@
 // <changelog>
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Initial creation">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Update logging.  Removing caching because MaxAppUrlEntity already caches.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
-namespace MaxFactry.Base.DataLayer.Provider
+namespace MaxFactry.Base.DataLayer.Library.Provider
 {
     using System;
     using System.Diagnostics;
@@ -54,30 +55,24 @@ namespace MaxFactry.Base.DataLayer.Provider
         {
             string lsLog = string.Empty;
             Stopwatch loWatch = Stopwatch.StartNew();
-            string lsR = this.GetStorageKeyFromData(loData);
-            lsLog += "|GetStorageKeyFromData|" + loWatch.ElapsedTicks;
-            //// Only check the configuration for the central storage key if one was not found in the data
+            string lsR = this.GetStorageKeyFromProcess();
+            lsLog += "|GetStorageKeyFromProcess|" + loWatch.ElapsedTicks;
             if (null == lsR || lsR.Length.Equals(0))
             {
-                lsR = this.GetStorageKeyFromProcess();
-                lsLog += "|GetStorageKeyFromProcess|" + loWatch.ElapsedTicks;
+                lsR = this.GetStorageKeyFromUrl();
+                lsLog += "|GetStorageKeyFromUrl|" + loWatch.ElapsedTicks;
                 if (null == lsR || lsR.Length.Equals(0))
                 {
-                    lsR = this.GetStorageKeyFromUrl();
-                    lsLog += "|GetStorageKeyFromUrl|" + loWatch.ElapsedTicks;
+                    lsR = this.GetStorageKeyFromQueryString();
+                    lsLog += "|GetStorageKeyFromQueryString|" + loWatch.ElapsedTicks;
                     if (null == lsR || lsR.Length.Equals(0))
                     {
-                        lsR = this.GetStorageKeyFromQueryString();
-                        lsLog += "|GetStorageKeyFromQueryString|" + loWatch.ElapsedTicks;
+                        lsR = this.GetStorageKeyFromCookie();
+                        lsLog += "|GetStorageKeyFromCookie|" + loWatch.ElapsedTicks;
                         if (null == lsR || lsR.Length.Equals(0))
                         {
-                            lsR = this.GetStorageKeyFromCookie();
-                            lsLog += "|GetStorageKeyFromCookie|" + loWatch.ElapsedTicks;
-                            if (null == lsR || lsR.Length.Equals(0))
-                            {
-                                lsR = this.GetStorageKeyFromConfiguration();
-                                lsLog += "|GetStorageKeyFromConfiguration|" + loWatch.ElapsedTicks;
-                            }
+                            lsR = this.GetStorageKeyFromConfiguration();
+                            lsLog += "|GetStorageKeyFromConfiguration|" + loWatch.ElapsedTicks;
                         }
                     }
                 }

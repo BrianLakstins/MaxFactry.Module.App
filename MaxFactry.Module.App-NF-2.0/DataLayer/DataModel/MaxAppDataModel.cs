@@ -28,6 +28,7 @@
 #region Change Log
 // <changelog>
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
@@ -81,7 +82,7 @@ namespace MaxFactry.Module.App.DataLayer
         public MaxAppDataModel()
             : base()
         {
-            this.RemoveKey(this.StorageKey);
+            this.RemoveType(this.StorageKey);
             this.SetDataStorageName("MaxApp");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);

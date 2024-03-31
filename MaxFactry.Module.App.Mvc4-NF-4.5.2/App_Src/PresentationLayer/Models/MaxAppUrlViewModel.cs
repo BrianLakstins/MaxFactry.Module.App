@@ -31,17 +31,17 @@
 // <change date="10/1/2018" author="Brian A. Lakstins" description="Add RedirectUrl support.">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Move to Mvc4 namespace.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
 namespace MaxFactry.Module.App.Mvc4.PresentationLayer
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using MaxFactry.Core;
     using MaxFactry.Base.BusinessLayer;
-    using MaxFactry.Base.DataLayer;
+    using MaxFactry.Base.DataLayer.Library;
     using MaxFactry.Module.App.Mvc4.BusinessLayer;
     using MaxFactry.Module.App.PresentationLayer;
 

@@ -41,7 +41,7 @@ namespace MaxFactry.Module.App.Mvc4.DataLayer
     /// <summary>
     /// Defines base data model for hash table like data with a unique identifier
     /// </summary>
-    public class MaxAppUrlDataModel : MaxFactry.Base.DataLayer.MaxBaseIdDataModel
+    public class MaxAppUrlDataModel : MaxFactry.Base.DataLayer.MaxBaseGuidKeyDataModel
     {
         /// <summary>
         /// Id of the App this URL is associated with.
@@ -74,7 +74,7 @@ namespace MaxFactry.Module.App.Mvc4.DataLayer
         public MaxAppUrlDataModel()
             : base()
         {
-            this.RemoveKey(this.StorageKey);
+            this.RemoveType(this.StorageKey);
             this.SetDataStorageName("MaxAppUrl");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);

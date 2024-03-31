@@ -31,6 +31,7 @@
 // <change date="8/13/2014" author="Brian A. Lakstins" description="Added method to load all data for a server.">
 // <change date="12/18/2014" author="Brian A. Lakstins" description="Updates to follow core data access patterns.">
 // <change date="12/21/2016" author="Brian A. Lakstins" description="Added methods to help determine app specific code.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to namespaces.">
 // </changelog>
 #endregion
 
@@ -39,6 +40,7 @@ namespace MaxFactry.Module.App.DataLayer
     using System;
     using MaxFactry.Core;
     using MaxFactry.Base.DataLayer;
+    using MaxFactry.Base.DataLayer.Library;
 
     /// <summary>
     /// Repository for managing app data storage.

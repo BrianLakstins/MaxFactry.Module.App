@@ -44,6 +44,7 @@
 // <change date="1/16/2021" author="Brian A. Lakstins" description="Update definition of cache keys.">
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Move to Mvc4 namespace.">
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Add Querystring handling">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
@@ -53,6 +54,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
     using MaxFactry.Core;
     using MaxFactry.Base.BusinessLayer;
     using MaxFactry.Base.DataLayer;
+    using MaxFactry.Base.DataLayer.Library;
     using MaxFactry.Module.App.DataLayer;
     using MaxFactry.Module.App.Mvc4.DataLayer;
     using System.Collections.Specialized;
@@ -60,7 +62,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
     /// <summary>
     /// Entity that allows interaction with information about Uri related to an App.
     /// </summary>
-    public class MaxAppUrlEntity : MaxFactry.Base.BusinessLayer.MaxBaseIdEntity
+    public class MaxAppUrlEntity : MaxFactry.Base.BusinessLayer.MaxBaseGuidKeyEntity
     {
         /// <summary>
         /// Matches Server exactly
@@ -268,7 +270,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         public int LoadByUrl(Uri loUrl)
         {
             string lsLog = string.Empty;
-            this.StorageKey = MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeApplication, MaxFactryLibrary.MaxStorageKeyName) as string;
+            this.Set(this.DataModel.StorageKey, MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeApplication, MaxFactryLibrary.MaxStorageKeyName) as string);
             string lsCacheKey = this.GetCacheKey() + "LoadByUrl/" + loUrl.Host + "/" + loUrl.AbsolutePath + "/" + loUrl.Query;
             MaxData loData = MaxCacheRepository.Get(this.GetType(), lsCacheKey, typeof(MaxData)) as MaxData;
             int lnR = MaxConvertLibrary.ConvertToInt(typeof(object), MaxCacheRepository.Get(this.GetType(), lsCacheKey + "MatchLevel", typeof(string)));

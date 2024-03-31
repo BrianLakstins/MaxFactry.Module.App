@@ -34,6 +34,7 @@
 // <change date="10/19/2018" author="Brian A. Lakstins" description="Update redirect logic after testing on EFS site.">
 // <change date="10/20/2018" author="Brian A. Lakstins" description="Fix referencing HttpContext URL when URL is being passed as arguement.">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
@@ -76,7 +77,7 @@ namespace MaxFactry.General.AspNet.PresentationLayer.Provider
             string lsR = base.GetTitle();
             if (string.IsNullOrEmpty(lsR))
             {
-                MaxAppViewModel loModel = new MaxAppViewModel(MaxFactry.Base.DataLayer.MaxDataLibrary.GetStorageKey(null));
+                MaxAppViewModel loModel = new MaxAppViewModel(MaxFactry.Base.DataLayer.Library.MaxDataLibrary.GetStorageKey(null));
                 lsR = loModel.Title;
             }
 

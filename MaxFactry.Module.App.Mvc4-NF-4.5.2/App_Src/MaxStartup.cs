@@ -43,7 +43,7 @@ namespace MaxFactry.Module.App.Mvc4
     using System.Web.Mvc;
     using System.Web.Routing;
     using MaxFactry.Core;
-    using MaxFactry.Base.DataLayer;
+    using MaxFactry.Base.DataLayer.Library;
     using MaxFactry.Module.App.Mvc4.PresentationLayer;
     using MaxFactry.Base.BusinessLayer;
     using MaxFactry.Module.App.BusinessLayer;
@@ -82,7 +82,7 @@ namespace MaxFactry.Module.App.Mvc4
             MaxConfigurationLibrary.Instance.ProviderSet(
                 typeof(MaxFactry.Core.Provider.MaxConfigurationLibraryAppProvider));
             //// Override the Data library provider
-            MaxDataLibrary.Instance.ProviderSet(typeof(MaxFactry.Base.DataLayer.Provider.MaxDataLibraryAppProvider));
+            MaxDataLibrary.Instance.ProviderSet(typeof(MaxFactry.Base.DataLayer.Library.Provider.MaxDataLibraryAppProvider));
         }
 
         public override void ApplicationStartup()

@@ -33,6 +33,7 @@
 // <change date="4/28/2020" author="Brian A. Lakstins" description="Use replace instead of string.format because it caused an exception.">
 // <change date="5/19/2020" author="Brian A. Lakstins" description="Fix getting current application so works when StorageKey is not saved in ScopeProcess.">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
+// <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // </changelog>
 #endregion
 
@@ -41,7 +42,7 @@ namespace MaxFactry.Module.App.BusinessLayer
     using System;
     using System.Collections.Generic;
     using MaxFactry.Core;
-    using MaxFactry.Base.DataLayer;
+    using MaxFactry.Base.DataLayer.Library;
     using MaxFactry.Base.BusinessLayer;
     using MaxFactry.Module.App.DataLayer;
 
