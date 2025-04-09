@@ -31,6 +31,7 @@
 // <change date="6/20/2014" author="Brian A. Lakstins" description="Moved encryption provider to MaxFactry_System.Web namespace.">
 // <change date="6/23/2014" author="Brian A. Lakstins" description="Updates for testing.">
 // <change date="6/27/2014" author="Brian A. Lakstins" description="Remove dependency on AppId.">
+// <change date="4/9/2025" author="Brian A. Lakstins" description="Use SetId instead of Insert(Guid)">
 // </changelog>
 #endregion
 
@@ -128,7 +129,8 @@ namespace MaxFactry.Module.App.Mvc4
                 MaxAppEntity loAppEntity = MaxAppEntity.Create();
                 loAppEntity.Name = "Primary";
                 loAppEntity.IsActive = true;
-                loAppEntity.Insert(loId);
+                loAppEntity.SetId(loId);
+                loAppEntity.Insert();
             }
         }
     }

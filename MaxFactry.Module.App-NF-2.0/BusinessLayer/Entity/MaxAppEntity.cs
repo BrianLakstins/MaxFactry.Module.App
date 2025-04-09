@@ -34,6 +34,7 @@
 // <change date="5/19/2020" author="Brian A. Lakstins" description="Fix getting current application so works when StorageKey is not saved in ScopeProcess.">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
+// <change date="4/9/2025" author="Brian A. Lakstins" description="Override SetProperties for setting properties.">
 // </changelog>
 #endregion
 
@@ -395,14 +396,19 @@ namespace MaxFactry.Module.App.BusinessLayer
             return this.Name.ToLowerInvariant().PadRight(100, ' ') + base.GetDefaultSortString();
         }
 
-        public override bool Insert(Guid loId)
+        protected override void SetProperties()
         {
             if (null != this._oConfig)
             {
                 this.Set(this.DataModel.Config, MaxConvertLibrary.SerializeObjectToString(this._oConfig));
             }
 
-            if (base.Insert(loId))
+            base.SetProperties();
+        }
+
+        public override bool Insert()
+        {
+            if (base.Insert())
             {
                 MaxAppIdEntity loEntity = MaxAppIdEntity.Create();
                 loEntity.AlternateId = this.Id.ToString();
@@ -417,11 +423,6 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public override bool Update()
         {
-            if (null != this._oConfig)
-            {
-                this.Set(this.DataModel.Config, MaxConvertLibrary.SerializeObjectToString(this._oConfig));
-            }
-
             if (base.Update())
             {
                 if (this.AlternateId == null || this.AlternateId.Length.Equals(0))
