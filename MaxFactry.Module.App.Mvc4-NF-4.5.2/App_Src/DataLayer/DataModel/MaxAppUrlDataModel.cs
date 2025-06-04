@@ -78,7 +78,7 @@ namespace MaxFactry.Module.App.Mvc4.DataLayer
             this.SetDataStorageName("MaxAppUrl");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);
-            this.AddStorageKey(this.AppId, typeof(Guid));
+            this.AddType(this.AppId, typeof(Guid));
             this.AddType(this.ServerName, typeof(MaxFactry.Base.DataLayer.MaxShortString));
             this.AddType(this.Script, typeof(MaxFactry.Base.DataLayer.MaxShortString));
             this.AddNullable(this.OptionList, typeof(long));

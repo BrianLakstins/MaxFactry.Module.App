@@ -46,6 +46,7 @@ namespace MaxFactry.General.AspNet.PresentationLayer.Provider
     using System.Web.Security;
     using MaxFactry.Core;
     using MaxFactry.Module.App.Mvc4.BusinessLayer;
+    using MaxFactry.Module.App.BusinessLayer;
     using MaxFactry.Module.App.PresentationLayer;
 
     /// <summary>

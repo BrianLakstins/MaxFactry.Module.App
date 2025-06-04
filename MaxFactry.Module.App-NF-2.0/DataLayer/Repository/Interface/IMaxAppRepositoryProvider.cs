@@ -40,7 +40,7 @@ namespace MaxFactry.Module.App.DataLayer
     /// <summary>
     /// Interface for MaxAppRepository
     /// </summary>
-    public interface IMaxAppRepositoryProvider : MaxFactry.Base.DataLayer.IMaxBaseIdRepositoryProvider
+    public interface IMaxAppRepositoryProvider : MaxFactry.Base.DataLayer.IMaxBaseRepositoryProvider
     {
 
     }

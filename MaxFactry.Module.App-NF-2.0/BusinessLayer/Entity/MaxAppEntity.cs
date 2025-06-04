@@ -50,7 +50,7 @@ namespace MaxFactry.Module.App.BusinessLayer
     /// <summary>
     /// Entity that allows interaction with App information
     /// </summary>
-    public class MaxAppEntity : MaxFactry.Base.BusinessLayer.MaxBaseIdEntity
+    public class MaxAppEntity : MaxFactry.Base.BusinessLayer.MaxBaseGuidKeyEntity
     {
         private MaxIndex _oConfig = null;
 
@@ -261,7 +261,11 @@ namespace MaxFactry.Module.App.BusinessLayer
             MaxEntityList loList = loEntity.LoadAllCache();
             if (loList.Count == 1)
             {
-                return loList[0] as MaxAppEntity;
+                MaxAppEntity loR = loList[0] as MaxAppEntity;
+                loR.IsActive = false;
+                loR.IsActive = true;
+                loR.Update();
+                return loR;
             }
 
             string lsId = MaxDataLibrary.GetStorageKey(null);
@@ -404,41 +408,6 @@ namespace MaxFactry.Module.App.BusinessLayer
             }
 
             base.SetProperties();
-        }
-
-        public override bool Insert()
-        {
-            if (base.Insert())
-            {
-                MaxAppIdEntity loEntity = MaxAppIdEntity.Create();
-                loEntity.AlternateId = this.Id.ToString();
-                loEntity.Name = this.Name;
-                loEntity.Insert();
-                this.AlternateId = loEntity.Id.ToString();
-                return this.Update();
-            }
-
-            return false;
-        }
-
-        public override bool Update()
-        {
-            if (base.Update())
-            {
-                if (this.AlternateId == null || this.AlternateId.Length.Equals(0))
-                {
-                    MaxAppIdEntity loEntity = MaxAppIdEntity.Create();
-                    loEntity.AlternateId = this.Id.ToString();
-                    loEntity.Name = this.Name;
-                    loEntity.Insert();
-                    this.AlternateId = loEntity.Id.ToString();
-                    return this.Update();
-                }
-
-                return true;
-            }
-
-            return false;
         }
     }
 }

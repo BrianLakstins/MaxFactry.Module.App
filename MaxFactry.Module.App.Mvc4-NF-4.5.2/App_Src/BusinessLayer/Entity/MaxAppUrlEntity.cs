@@ -200,27 +200,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         /// <returns>True if data was found, loaded, and not marked as deleted.  False could be not found, or deleted.</returns>
         public MaxEntityList LoadAllByAppId(Guid loAppId)
         {
-            MaxEntityList loR = MaxEntityList.Create(this.GetType());
-            string lsCacheEntityKey = this.GetCacheKey() + "LoadAll";
-            MaxEntityList loEntityList = MaxCacheRepository.Get(this.GetType(), lsCacheEntityKey, typeof(MaxEntityList)) as MaxEntityList;
-            if (null != loEntityList)
-            {
-                for (int lnE = 0; lnE < loEntityList.Count; lnE++)
-                {
-                    MaxAppUrlEntity loEntity = loEntityList[lnE] as MaxAppUrlEntity;
-                    if (loEntity.AppId.Equals(loAppId))
-                    {
-                        loR.Add(loEntity);
-                    }
-                }
-            }
-            else
-            {
-                MaxDataList loDataList = MaxAppRepository.SelectAllByProperty(this.Data, this.DataModel.AppId, loAppId);
-                loR = MaxEntityList.Create(this.GetType(), loDataList);
-            }
-
-            return loR;
+            return this.LoadAllByPropertyCache(this.DataModel.AppId, loAppId);
         }
 
         /// <summary>
@@ -230,27 +210,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         /// <returns>True if data was found, loaded, and not marked as deleted.  False could be not found, or deleted.</returns>
         public MaxEntityList LoadAllByServerName(string lsServerName)
         {
-            MaxEntityList loR = MaxEntityList.Create(this.GetType());
-            string lsCacheEntityKey = this.GetCacheKey() + "LoadAll";
-            MaxEntityList loEntityList = MaxCacheRepository.Get(this.GetType(), lsCacheEntityKey, typeof(MaxEntityList)) as MaxEntityList;
-            if (null != loEntityList)
-            {
-                for (int lnE = 0; lnE < loEntityList.Count; lnE++)
-                {
-                    MaxAppUrlEntity loEntity = loEntityList[lnE] as MaxAppUrlEntity;
-                    if (loEntity.ServerName.Equals(lsServerName))
-                    {
-                        loR.Add(loEntity);
-                    }
-                }
-            }
-            else
-            {
-                MaxDataList loDataList = MaxAppRepository.SelectAllByProperty(this.Data, this.DataModel.ServerName, lsServerName);
-                loR = MaxEntityList.Create(this.GetType(), loDataList);
-            }
-
-            return loR;
+            return this.LoadAllByPropertyCache(this.DataModel.ServerName, lsServerName);
         }
 
         /// <summary>
@@ -270,7 +230,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         public int LoadByUrl(Uri loUrl)
         {
             string lsLog = string.Empty;
-            this.Set(this.DataModel.StorageKey, MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeApplication, MaxFactryLibrary.MaxStorageKeyName) as string);
+            //this.Set(this.DataModel.StorageKey, MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeApplication, MaxFactryLibrary.MaxStorageKeyName) as string);
             string lsCacheKey = this.GetCacheKey() + "LoadByUrl/" + loUrl.Host + "/" + loUrl.AbsolutePath + "/" + loUrl.Query;
             MaxData loData = MaxCacheRepository.Get(this.GetType(), lsCacheKey, typeof(MaxData)) as MaxData;
             int lnR = MaxConvertLibrary.ConvertToInt(typeof(object), MaxCacheRepository.Get(this.GetType(), lsCacheKey + "MatchLevel", typeof(string)));

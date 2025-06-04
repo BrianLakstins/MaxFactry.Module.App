@@ -39,7 +39,7 @@ namespace MaxFactry.Module.App.DataLayer
     /// <summary>
     /// Defines base data model for hash table like data with a unique identifier
     /// </summary>
-    public class MaxAppDataModel : MaxFactry.Base.DataLayer.MaxBaseIdDataModel
+    public class MaxAppDataModel : MaxFactry.Base.DataLayer.MaxBaseGuidKeyDataModel
     {
         /// <summary>
         /// IndexId for the Index
@@ -83,6 +83,7 @@ namespace MaxFactry.Module.App.DataLayer
             : base()
         {
             this.RemoveType(this.StorageKey);
+            this.AddAttribute(this.Id, AttributeIsStorageKey, "true");
             this.SetDataStorageName("MaxApp");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);

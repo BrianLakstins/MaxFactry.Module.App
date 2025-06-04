@@ -45,28 +45,7 @@ namespace MaxFactry.Module.App.DataLayer
     /// <summary>
     /// Repository for managing app data storage.
     /// </summary>
-    public class MaxAppRepository : MaxFactry.Base.DataLayer.MaxBaseIdRepository
+    public class MaxAppRepository : MaxFactry.Base.DataLayer.MaxBaseRepository
     {
-        public static bool IsDisplayConnection(MaxData loData)
-        {
-            string lsStorageKey = MaxDataLibrary.GetStorageKey(loData);
-            if (lsStorageKey.ToLower().StartsWith("9ff81aff-59e5-46d0-a12f-3148fbdca7de"))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public static bool IsTractorToolsDirect(MaxData loData)
-        {
-            string lsStorageKey = MaxDataLibrary.GetStorageKey(loData);
-            if (lsStorageKey.ToLower().StartsWith("037a5df8-9d2c-4d9b-ac57-b3a27490a794"))
-            {
-                return true;
-            }
-
-            return false;
-        }
     }
 }

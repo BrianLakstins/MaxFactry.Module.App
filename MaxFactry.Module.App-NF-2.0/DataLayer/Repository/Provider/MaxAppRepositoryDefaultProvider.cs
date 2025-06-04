@@ -41,7 +41,7 @@ namespace MaxFactry.Module.App.DataLayer.Provider
     /// <summary>
     /// Default Provider for MaxAppRepository
     /// </summary>
-    public class MaxAppRepositoryDefaultProvider : MaxFactry.Base.DataLayer.Provider.MaxBaseIdRepositoryDefaultProvider, IMaxAppRepositoryProvider
+    public class MaxAppRepositoryDefaultProvider : MaxFactry.Base.DataLayer.Provider.MaxBaseRepositoryDefaultProvider, IMaxAppRepositoryProvider
     {
     }
 }

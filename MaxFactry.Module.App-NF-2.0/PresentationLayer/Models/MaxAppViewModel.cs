@@ -44,7 +44,7 @@ namespace MaxFactry.Module.App.PresentationLayer
     /// <summary>
     /// View model for content.
     /// </summary>
-    public class MaxAppViewModel : MaxFactry.Base.PresentationLayer.MaxBaseIdViewModel
+    public class MaxAppViewModel : MaxFactry.Base.PresentationLayer.MaxBaseGuidKeyViewModel
     {
         private List<MaxAppViewModel> _oSortedList = null;
 
