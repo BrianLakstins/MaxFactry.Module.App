@@ -30,6 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MaxFactry.General" Version="1.0.24.44" />
+		<PackageReference Include="MaxFactry.General" Version="1.0.24.50" />
 	</ItemGroup>
 </Project>
