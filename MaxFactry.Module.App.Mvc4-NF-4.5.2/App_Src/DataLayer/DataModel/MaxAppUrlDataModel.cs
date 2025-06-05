@@ -30,6 +30,7 @@
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
 // <change date="10/1/2018" author="Brian A. Lakstins" description="Add RedirectUrl support.">
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Move to Mvc4 namespace.">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Remove key designation for AppId.">
 // </changelog>
 #endregion
 
@@ -78,7 +79,7 @@ namespace MaxFactry.Module.App.Mvc4.DataLayer
             this.SetDataStorageName("MaxAppUrl");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);
-            this.AddKey(this.AppId, typeof(Guid));
+            this.AddType(this.AppId, typeof(Guid));
             this.AddType(this.ServerName, typeof(MaxFactry.Base.DataLayer.MaxShortString));
             this.AddType(this.Script, typeof(MaxFactry.Base.DataLayer.MaxShortString));
             this.AddNullable(this.OptionList, typeof(long));
