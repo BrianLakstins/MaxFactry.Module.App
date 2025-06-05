@@ -29,7 +29,7 @@
 // <changelog>
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
-// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class and specify StorageKey.">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class and remove storage key">
 // </changelog>
 #endregion
 
@@ -84,7 +84,6 @@ namespace MaxFactry.Module.App.DataLayer
             : base()
         {
             this.RemoveType(this.StorageKey);
-            this.AddAttribute(this.Id, AttributeIsStorageKey, "true");
             this.SetDataStorageName("MaxApp");
             this.RepositoryProviderType = typeof(MaxFactry.Module.App.DataLayer.Provider.MaxAppRepositoryDefaultProvider);
             this.RepositoryType = typeof(MaxAppRepository);
