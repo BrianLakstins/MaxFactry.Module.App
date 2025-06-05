@@ -35,7 +35,7 @@
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="4/9/2025" author="Brian A. Lakstins" description="Override SetProperties for setting properties.">
-// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.  Remove integration with AppId entity">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.  Remove integration with AppId entity.  Fix issue with speed.">
 // </changelog>
 #endregion
 
@@ -258,35 +258,33 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static MaxAppEntity GetCurrent()
         {
-            MaxAppEntity loEntity = MaxAppEntity.Create();
-            MaxEntityList loList = loEntity.LoadAllCache();
+            MaxAppEntity loR = MaxAppEntity.Create();
+            MaxEntityList loList = loR.LoadAllCache();
             if (loList.Count == 1)
             {
-                MaxAppEntity loR = loList[0] as MaxAppEntity;
-                loR.IsActive = false;
-                loR.IsActive = true;
-                loR.Update();
-                return loR;
+                loR = loList[0] as MaxAppEntity;
             }
-
-            string lsId = MaxDataLibrary.GetStorageKey(null);
-            if (null != lsId && lsId.Length > 0)
+            else
             {
-                Guid loId = MaxConvertLibrary.ConvertToGuid(typeof(object), lsId);
-                if (!Guid.Empty.Equals(loId))
+                string lsId = MaxDataLibrary.GetStorageKey(null);
+                if (null != lsId && lsId.Length > 0)
                 {
-                    for (int lnE = 0; lnE < loList.Count; lnE++)
+                    Guid loId = MaxConvertLibrary.ConvertToGuid(typeof(object), lsId);
+                    if (!Guid.Empty.Equals(loId))
                     {
-                        loEntity = loList[lnE] as MaxAppEntity;
-                        if (loEntity.Id.Equals(loId))
+                        for (int lnE = 0; lnE < loList.Count; lnE++)
                         {
-                            return loEntity;
+                            MaxAppEntity loEntity = loList[lnE] as MaxAppEntity;
+                            if (loEntity.Id.Equals(loId))
+                            {
+                                loR = loEntity;
+                            }
                         }
                     }
                 }
             }
 
-            return MaxAppEntity.Create();
+            return loR;
         }
 
         public static string GetGoogleAnalyticsJavascriptTag()

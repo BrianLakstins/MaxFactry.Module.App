@@ -66,6 +66,13 @@ namespace MaxFactry.Module.App.Mvc4
             //// Set the Google Analytics Id for the current application
             MaxFactry.Module.App.BusinessLayer.MaxAppEntity loAppEntity = MaxFactry.Module.App.BusinessLayer.MaxAppEntity.GetCurrent();
             MaxFactry.General.PresentationLayer.MaxDesignLibrary.SetThemeName(loAppEntity.ThemeName);
+            if (loAppEntity.LastUpdateDate < DateTime.UtcNow.AddHours(-1))
+            {
+                //// Update at most once per hour to indicate app is being used
+                loAppEntity.IsActive = false;
+                loAppEntity.IsActive = true;
+                loAppEntity.Update();
+            }
         }
 
         /// <summary>

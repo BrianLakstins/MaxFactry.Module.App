@@ -28,6 +28,7 @@
 #region Change Log
 // <changelog>
 // <change date="4/28/2020" author="Brian A. Lakstins" description="Initial creation">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Arrange code so debugger can be used to test speed.">
 // </changelog>
 #endregion
 
@@ -56,22 +57,26 @@ namespace MaxFactry.General.AspNet.IIS.Mvc4.PresentationLayer
     {
         public static IHtmlString MaxGetGoogleAnalytics<T>(this HtmlHelper<T> helper)
         {
-            return new HtmlString(MaxAppEntity.GetGoogleAnalyticsJavascriptTag());
+            IHtmlString loR = new HtmlString(MaxAppEntity.GetGoogleAnalyticsJavascriptTag());
+            return loR;
         }
 
         public static IHtmlString MaxGetGoogleTagManagerHead<T>(this HtmlHelper<T> helper)
         {
-            return new HtmlString(MaxAppEntity.GetGoogleTagManagerJavascriptHead());
+            IHtmlString loR = new HtmlString(MaxAppEntity.GetGoogleTagManagerJavascriptHead());
+            return loR;
         }
 
         public static IHtmlString MaxGetGoogleTagManagerBody<T>(this HtmlHelper<T> helper)
         {
-            return new HtmlString(MaxAppEntity.GetGoogleTagManagerJavascriptBody());
+            IHtmlString loR = new HtmlString(MaxAppEntity.GetGoogleTagManagerJavascriptBody());
+            return loR;
         }
 
         public static IHtmlString MaxGetMicrosoftApplicationInsightsHead<T>(this HtmlHelper<T> helper)
         {
-            return new HtmlString(MaxAppEntity.GetMicrosoftApplicationInsightsJavascript());
+            IHtmlString loR = new HtmlString(MaxAppEntity.GetMicrosoftApplicationInsightsJavascript());
+            return loR;
         }
     }
 }
