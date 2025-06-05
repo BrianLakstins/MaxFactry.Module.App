@@ -29,6 +29,7 @@
 // <changelog>
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
 // <change date="5/27/2020" author="Brian A. Lakstins" description="Fix GTM tag getting cleared when updated">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.">
 // </changelog>
 #endregion
 
@@ -44,7 +45,7 @@ namespace MaxFactry.Module.App.PresentationLayer
     /// <summary>
     /// View model for content.
     /// </summary>
-    public class MaxAppViewModel : MaxFactry.Base.PresentationLayer.MaxBaseIdViewModel
+    public class MaxAppViewModel : MaxFactry.Base.PresentationLayer.MaxBaseGuidKeyViewModel
     {
         private List<MaxAppViewModel> _oSortedList = null;
 

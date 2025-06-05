@@ -29,6 +29,7 @@
 // <changelog>
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
 // <change date="8/13/2014" author="Brian A. Lakstins" description="Added method.">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.">
 // </changelog>
 #endregion
 
@@ -40,7 +41,7 @@ namespace MaxFactry.Module.App.DataLayer
     /// <summary>
     /// Interface for MaxAppRepository
     /// </summary>
-    public interface IMaxAppRepositoryProvider : MaxFactry.Base.DataLayer.IMaxBaseIdRepositoryProvider
+    public interface IMaxAppRepositoryProvider : MaxFactry.Base.DataLayer.IMaxBaseRepositoryProvider
     {
 
     }

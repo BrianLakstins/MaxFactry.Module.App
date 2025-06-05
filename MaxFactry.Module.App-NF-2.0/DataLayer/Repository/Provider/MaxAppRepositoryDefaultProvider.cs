@@ -29,6 +29,7 @@
 // <changelog>
 // <change date="6/26/2014" author="Brian A. Lakstins" description="Initial Release">
 // <change date="8/13/2014" author="Brian A. Lakstins" description="Added method to load all data for a server.">
+// <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.">
 // </changelog>
 #endregion
 
@@ -41,7 +42,7 @@ namespace MaxFactry.Module.App.DataLayer.Provider
     /// <summary>
     /// Default Provider for MaxAppRepository
     /// </summary>
-    public class MaxAppRepositoryDefaultProvider : MaxFactry.Base.DataLayer.Provider.MaxBaseIdRepositoryDefaultProvider, IMaxAppRepositoryProvider
+    public class MaxAppRepositoryDefaultProvider : MaxFactry.Base.DataLayer.Provider.MaxBaseRepositoryDefaultProvider, IMaxAppRepositoryProvider
     {
     }
 }
