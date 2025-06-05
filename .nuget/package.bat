@@ -3,6 +3,8 @@ copy ..\MaxFactry.Module.App-NF-2.0\bin\Release\MaxFactry.Module.App*.dll lib\Ap
 copy ..\MaxFactry.Module.App-NF-4.5.2\bin\Release\MaxFactry.Module.App*.dll lib\App\net452\
 copy ..\MaxFactry.Module.App-NF-4.7.2\bin\Release\MaxFactry.Module.App*.dll lib\App\net472\
 copy ..\MaxFactry.Module.App-NF-4.8\bin\Release\MaxFactry.Module.App*.dll lib\App\net48\
+copy ..\MaxFactry.Module.App-NC-3.1\bin\Release\netcoreapp3.1\MaxFactry.Module.App*.dll  lib\App\netcoreapp3.1\
+copy ..\MaxFactry.Module.App-NC-6.0\bin\Release\net6.0\MaxFactry.Module.App*.dll  lib\App\net6.0\
 
 c:\install\nuget\nuget.exe pack MaxFactry.Module.App.nuspec -OutputDirectory "packages" -IncludeReferencedProjects -properties Configuration=Release 
 
