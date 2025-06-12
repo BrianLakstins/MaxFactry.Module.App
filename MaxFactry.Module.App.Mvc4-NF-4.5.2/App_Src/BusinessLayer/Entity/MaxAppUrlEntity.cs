@@ -231,7 +231,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         public int LoadByUrl(Uri loUrl)
         {
             string lsLog = string.Empty;
-            string lsCacheKey = this.GetCacheKey() + "LoadByUrl/" + loUrl.Host + "/" + loUrl.AbsolutePath + "/" + loUrl.Query;
+            string lsCacheKey = this.GetCacheKey("LoadByUrl/" + loUrl.Host + "/" + loUrl.AbsolutePath + "/" + loUrl.Query);
             MaxData loData = MaxCacheRepository.Get(this.GetType(), lsCacheKey, typeof(MaxData)) as MaxData;
             int lnR = MaxConvertLibrary.ConvertToInt(typeof(object), MaxCacheRepository.Get(this.GetType(), lsCacheKey + "MatchLevel", typeof(string)));
             if (null != loData && lnR > 0)
@@ -240,7 +240,6 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
             }
             else if (lnR < 0)
             {
-                MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, MaxFactryLibrary.MaxStorageKeyName, this.StorageKey);
                 MaxEntityList loEntityList = this.LoadAllCache();
                 Guid loR = Guid.Empty;
                 int lnMatchLevelCurrent = 0;
@@ -346,14 +345,14 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
 
                 if (null != loData && lnR > 0)
                 {
-                    MaxCacheRepository.Set(this.GetType(), lsCacheKey, loData);
+                    MaxCacheRepository.Set(this.GetType(), lsCacheKey, loData, this.GetCacheExpire());
                     this.Load(loData);
-                    MaxCacheRepository.Set(this.GetType(), lsCacheKey + "MatchLevel", lnR);
+                    MaxCacheRepository.Set(this.GetType(), lsCacheKey + "MatchLevel", lnR, this.GetCacheExpire());
                 }
 
                 if (lnMatchLevelCurrent == 0)
                 {
-                    MaxCacheRepository.Set(this.GetType(), lsCacheKey + "MatchLevel", lnMatchLevelCurrent);
+                    MaxCacheRepository.Set(this.GetType(), lsCacheKey + "MatchLevel", lnMatchLevelCurrent, this.GetCacheExpire());
                     string lsSentKey = "MaxAppUrlEntity.LoadFromUrlNotification-" + loUrl.Host;
                     bool lbReported = MaxConvertLibrary.ConvertToBoolean(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopePersistent, lsSentKey));
                     if (!lbReported && loUrl.Host != "localhost" && !loUrl.Host.EndsWith("116vb.local"))

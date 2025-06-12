@@ -32,6 +32,7 @@
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Fix reference to StorageKey.">
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Move to Mvc4 namespace.">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.">
 // </changelog>
 #endregion
 
@@ -132,7 +133,7 @@ namespace MaxFactry.Module.App.Mvc4.PresentationLayer
         {
             if (null == this._oSortedListByAppId)
             {
-                MaxAppViewModel loAppViewModel = new MaxAppViewModel(MaxDataLibrary.GetStorageKey(null));
+                MaxAppViewModel loAppViewModel = new MaxAppViewModel(MaxDataLibrary.GetApplicationKey());
                 this._oSortedListByAppId = new List<MaxAppUrlViewModel>();
                 string[] laKey = this.EntityIndex.GetSortedKeyList();
                 for (int lnK = 0; lnK < laKey.Length; lnK++)
@@ -175,7 +176,7 @@ namespace MaxFactry.Module.App.Mvc4.PresentationLayer
                         loEntity.RedirectUrl = this.RedirectUrl;
                     }
 
-                    loEntity.AppId = MaxConvertLibrary.ConvertToGuid(typeof(object), MaxDataLibrary.GetStorageKey(null));
+                    loEntity.AppId = MaxConvertLibrary.ConvertToGuid(typeof(object), MaxDataLibrary.GetApplicationKey());
                     return true;
                 }
             }

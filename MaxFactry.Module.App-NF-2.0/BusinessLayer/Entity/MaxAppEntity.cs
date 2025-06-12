@@ -36,6 +36,7 @@
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="4/9/2025" author="Brian A. Lakstins" description="Override SetProperties for setting properties.">
 // <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.  Remove integration with AppId entity.  Fix issue with speed.">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.">
 // </changelog>
 #endregion
 
@@ -266,7 +267,7 @@ namespace MaxFactry.Module.App.BusinessLayer
             }
             else
             {
-                string lsId = MaxDataLibrary.GetStorageKey(null);
+                string lsId = MaxDataLibrary.GetApplicationKey();
                 if (null != lsId && lsId.Length > 0)
                 {
                     Guid loId = MaxConvertLibrary.ConvertToGuid(typeof(object), lsId);

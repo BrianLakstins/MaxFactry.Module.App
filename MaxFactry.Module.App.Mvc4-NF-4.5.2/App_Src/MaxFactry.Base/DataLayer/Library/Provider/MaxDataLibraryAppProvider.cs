@@ -30,6 +30,7 @@
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Initial creation">
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Update logging.  Removing caching because MaxAppUrlEntity already caches.">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.  Try to prevent Stack Overflow">
 // </changelog>
 #endregion
 
@@ -38,6 +39,7 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
     using System;
     using System.Diagnostics;
     using System.Web;
+    using System.Web.UI;
     using MaxFactry.Core;
     using MaxFactry.Module.App.Mvc4.BusinessLayer;
 
@@ -46,63 +48,42 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
     /// </summary>
     public class MaxDataLibraryAppProvider : MaxDataLibraryGeneralAspNetProvider
     {
+        private static readonly string ApplicationKeyForUrl = "_ApplicationKeyForUrl";
+
         /// <summary>
         /// Gets the storage key used to separate the storage of data
         /// </summary>
         /// <param name="loData">The data to be stored using the storage key.</param>
         /// <returns>string used for the storage key</returns>
-        public override string GetStorageKey(MaxData loData)
+        public override string GetApplicationKey()
         {
-            string lsLog = string.Empty;
-            Stopwatch loWatch = Stopwatch.StartNew();
-            string lsR = this.GetStorageKeyFromProcess();
-            lsLog += "|GetStorageKeyFromProcess|" + loWatch.ElapsedTicks;
-            if (null == lsR || lsR.Length.Equals(0))
+            string lsR = base.GetApplicationKey();
+
+            string lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl));
+            if (null == lsApplicationKey || lsApplicationKey.Length == 0)
             {
-                lsR = this.GetStorageKeyFromUrl();
-                lsLog += "|GetStorageKeyFromUrl|" + loWatch.ElapsedTicks;
-                if (null == lsR || lsR.Length.Equals(0))
-                {
-                    lsR = this.GetStorageKeyFromQueryString();
-                    lsLog += "|GetStorageKeyFromQueryString|" + loWatch.ElapsedTicks;
-                    if (null == lsR || lsR.Length.Equals(0))
-                    {
-                        lsR = this.GetStorageKeyFromCookie();
-                        lsLog += "|GetStorageKeyFromCookie|" + loWatch.ElapsedTicks;
-                        if (null == lsR || lsR.Length.Equals(0))
-                        {
-                            lsR = this.GetStorageKeyFromConfiguration();
-                            lsLog += "|GetStorageKeyFromConfiguration|" + loWatch.ElapsedTicks;
-                        }
-                    }
-                }
+                lsApplicationKey = this.GetStorageKeyFromUrl(lsR);
+            }
+
+            if (null != lsApplicationKey && lsApplicationKey.Length > 0)
+            {
+                lsR = lsApplicationKey;
             }
 
             if (lsR.Length == 0)
             {
-                MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure("GetStorageKeyProvider", MaxEnumGroup.LogError, "GetStorageKey(MaxData loData) ended with blank storagekey."));
-            }
-            else
-            {
-                long lnDuration = loWatch.ElapsedMilliseconds;
-                if (lnDuration > 500)
-                {
-                    MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure("GetStorageKeyProvider", MaxEnumGroup.LogWarning, "GetStorageKey took {lnDuration} ms for storage key {lsStorageKey} with log {lsLog}.", lnDuration, lsR, lsLog));
-                }
-                else
-                {
-                    MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure("GetStorageKeyProvider", MaxEnumGroup.LogDebug, "GetStorageKey took {lnDuration} ms for storage key {lsStorageKey} with log {lsLog}.", lnDuration, lsR, lsLog));
-                }
+                MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetApplicationKey", MaxEnumGroup.LogError, "GetApplicationKey() ended with blank key."));
             }
 
             return lsR;
         }
 
-        protected virtual string GetStorageKeyFromUrl()
-        {
+        protected virtual string GetStorageKeyFromUrl(string lsApplicationKey)
+        {            
             string lsR = string.Empty;
             if (null != this.Request)
             {
+                MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl, lsApplicationKey);
                 MaxAppUrlEntity loEntity = MaxAppUrlEntity.Create();
                 int lnMatchLevel = loEntity.LoadByUrl(this.Request.Url);
                 if (lnMatchLevel > 0)
@@ -115,6 +96,8 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
                         MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, MaxFactryLibrary.MaxStorageKeyName, lsR);
                     }
                 }
+
+                MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl, lsR);
             }
 
             return lsR;
