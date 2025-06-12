@@ -32,6 +32,7 @@
 // <change date="4/28/2020" author="Brian A. Lakstins" description="Try to use to override application scope, but causes stack overflow.">
 // <change date="5/19/2020" author="Brian A. Lakstins" description="Add some logging code.">
 // <change date="6/5/2020" author="Brian A. Lakstins" description="Updated to allow fall back to base if key does not exist in Scope24">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Update for MaxApp maybe returning a null">
 // </changelog>
 #endregion
 
@@ -57,7 +58,7 @@ namespace MaxFactry.Core.Provider
             if (loScope == MaxEnumGroup.Scope24)
             {
                 MaxAppEntity loCurrent = MaxAppEntity.GetCurrent();
-                if (loCurrent.AttributeIndex.Contains(lsKey) || loCurrent.Config.Contains(lsKey))
+                if (null != loCurrent && loCurrent.AttributeIndex.Contains(lsKey) || loCurrent.Config.Contains(lsKey))
                 {
                     object loR = loCurrent.AttributeIndex[lsKey];
                     if (null == loR)

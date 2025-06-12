@@ -37,6 +37,7 @@
 // <change date="4/9/2025" author="Brian A. Lakstins" description="Override SetProperties for setting properties.">
 // <change date="6/4/2025" author="Brian A. Lakstins" description="Change base class.  Remove integration with AppId entity.  Fix issue with speed.">
 // <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Allow MaxApp to return null if no matches. Update for MaxApp maybe returning a null">
 // </changelog>
 #endregion
 
@@ -259,8 +260,8 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static MaxAppEntity GetCurrent()
         {
-            MaxAppEntity loR = MaxAppEntity.Create();
-            MaxEntityList loList = loR.LoadAllCache();
+            MaxAppEntity loR = null;
+            MaxEntityList loList = MaxAppEntity.Create().LoadAllCache();
             if (loList.Count == 1)
             {
                 loR = loList[0] as MaxAppEntity;
@@ -290,33 +291,37 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static string GetGoogleAnalyticsJavascriptTag()
         {
-            string lsAnalyticsId = GetCurrent().AnalyticsId;
-            if (!string.IsNullOrEmpty(lsAnalyticsId))
+            MaxAppEntity loEntity = GetCurrent();
+            if (null != loEntity)
             {
-                if (!_oTrackingCodeIndex.ContainsKey(lsAnalyticsId))
+                string lsAnalyticsId = loEntity.AnalyticsId;
+                if (!string.IsNullOrEmpty(lsAnalyticsId))
                 {
-                    lock (_oLock)
+                    if (!_oTrackingCodeIndex.ContainsKey(lsAnalyticsId))
                     {
-                        if (!_oTrackingCodeIndex.ContainsKey(lsAnalyticsId))
+                        lock (_oLock)
                         {
-                            string lsJavscriptCode = _sGoogleUniversalAnalyticsCodeFormat.Replace("[GID]", lsAnalyticsId);
-                            // Add function to track outbound clicks
-                            lsJavscriptCode += "\r\nvar pfTrackOutboundLink = function (loLink, lsUrl) {\r\n" +
-                                "ga('send', 'event', 'outbound', 'click', lsUrl, {\r\n" +
-                                "'hitCallback': function () {\r\n" +
-                                "if (loLink.target.toLowerCase() != '_blank') { document.location = lsUrl;}}});}\r\n";
-                            // Add onclick event to all external links
-                            lsJavscriptCode += "\r\njQuery(document).ready(function () {\r\n" +
-                                "jQuery(\"a[href^='http:']:not([href*='\" + window.location.host + \"'])\").each(function () {\r\n" +
-                                "jQuery(this).on(\"click\", function () {\r\n" +
-                                "pfTrackOutboundLink(this, jQuery(this).attr('href'));});});});\r\n";
+                            if (!_oTrackingCodeIndex.ContainsKey(lsAnalyticsId))
+                            {
+                                string lsJavscriptCode = _sGoogleUniversalAnalyticsCodeFormat.Replace("[GID]", lsAnalyticsId);
+                                // Add function to track outbound clicks
+                                lsJavscriptCode += "\r\nvar pfTrackOutboundLink = function (loLink, lsUrl) {\r\n" +
+                                    "ga('send', 'event', 'outbound', 'click', lsUrl, {\r\n" +
+                                    "'hitCallback': function () {\r\n" +
+                                    "if (loLink.target.toLowerCase() != '_blank') { document.location = lsUrl;}}});}\r\n";
+                                // Add onclick event to all external links
+                                lsJavscriptCode += "\r\njQuery(document).ready(function () {\r\n" +
+                                    "jQuery(\"a[href^='http:']:not([href*='\" + window.location.host + \"'])\").each(function () {\r\n" +
+                                    "jQuery(this).on(\"click\", function () {\r\n" +
+                                    "pfTrackOutboundLink(this, jQuery(this).attr('href'));});});});\r\n";
 
-                            _oTrackingCodeIndex.Add(lsAnalyticsId, "\r\n<script>\r\n" + lsJavscriptCode + "</script>\r\n");
+                                _oTrackingCodeIndex.Add(lsAnalyticsId, "\r\n<script>\r\n" + lsJavscriptCode + "</script>\r\n");
+                            }
                         }
                     }
-                }
 
-                return _oTrackingCodeIndex[lsAnalyticsId];
+                    return _oTrackingCodeIndex[lsAnalyticsId];
+                }
             }
 
             return string.Empty;
@@ -324,22 +329,26 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static string GetGoogleTagManagerJavascriptHead()
         {
-            string lsGTMId = GetCurrent().GTMId;
-            if (!string.IsNullOrEmpty(lsGTMId))
+            MaxAppEntity loEntity = GetCurrent();
+            if (null != loEntity)
             {
-                if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "HEAD"))
+                string lsGTMId = loEntity.GTMId;
+                if (!string.IsNullOrEmpty(lsGTMId))
                 {
-                    lock (_oLock)
+                    if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "HEAD"))
                     {
-                        if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "HEAD"))
+                        lock (_oLock)
                         {
-                            string lsJavscriptCode = _sGoogleTagManagerHeadCodeFormat.Replace("[GTMID]", lsGTMId);
-                            _oTrackingCodeIndex.Add(lsGTMId + "HEAD", lsJavscriptCode);
+                            if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "HEAD"))
+                            {
+                                string lsJavscriptCode = _sGoogleTagManagerHeadCodeFormat.Replace("[GTMID]", lsGTMId);
+                                _oTrackingCodeIndex.Add(lsGTMId + "HEAD", lsJavscriptCode);
+                            }
                         }
                     }
-                }
 
-                return _oTrackingCodeIndex[lsGTMId + "HEAD"];
+                    return _oTrackingCodeIndex[lsGTMId + "HEAD"];
+                }
             }
 
             return string.Empty;
@@ -347,22 +356,26 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static string GetGoogleTagManagerJavascriptBody()
         {
-            string lsGTMId = MaxAppEntity.GetCurrent().GTMId;
-            if (!string.IsNullOrEmpty(lsGTMId))
+            MaxAppEntity loEntity = GetCurrent();
+            if (null != loEntity)
             {
-                if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "BODY"))
+                string lsGTMId = loEntity.GTMId;
+                if (!string.IsNullOrEmpty(lsGTMId))
                 {
-                    lock (_oLock)
+                    if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "BODY"))
                     {
-                        if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "BODY"))
+                        lock (_oLock)
                         {
-                            string lsJavscriptCode = _sGoogleTagManagerBodyCodeFormat.Replace("[GTMID]", lsGTMId);
-                            _oTrackingCodeIndex.Add(lsGTMId + "BODY", lsJavscriptCode);
+                            if (!_oTrackingCodeIndex.ContainsKey(lsGTMId + "BODY"))
+                            {
+                                string lsJavscriptCode = _sGoogleTagManagerBodyCodeFormat.Replace("[GTMID]", lsGTMId);
+                                _oTrackingCodeIndex.Add(lsGTMId + "BODY", lsJavscriptCode);
+                            }
                         }
                     }
-                }
 
-                return _oTrackingCodeIndex[lsGTMId + "BODY"];
+                    return _oTrackingCodeIndex[lsGTMId + "BODY"];
+                }
             }
 
             return string.Empty;
@@ -370,22 +383,26 @@ namespace MaxFactry.Module.App.BusinessLayer
 
         public static string GetMicrosoftApplicationInsightsJavascript()
         {
-            string lsInstrumentationKey = MaxAppEntity.GetCurrent().InstrumentationKey;
-            if (!string.IsNullOrEmpty(lsInstrumentationKey))
+            MaxAppEntity loEntity = GetCurrent();
+            if (null != loEntity)
             {
-                if (!_oTrackingCodeIndex.ContainsKey(lsInstrumentationKey))
+                string lsInstrumentationKey = loEntity.InstrumentationKey;
+                if (!string.IsNullOrEmpty(lsInstrumentationKey))
                 {
-                    lock (_oLock)
+                    if (!_oTrackingCodeIndex.ContainsKey(lsInstrumentationKey))
                     {
-                        if (!_oTrackingCodeIndex.ContainsKey(lsInstrumentationKey))
+                        lock (_oLock)
                         {
-                            string lsJavscriptCode = _sMicrosoftApplicationInsightsHeadCodeFormat.Replace("[INSTRUMENTATIONKEY]", lsInstrumentationKey);
-                            _oTrackingCodeIndex.Add(lsInstrumentationKey, lsJavscriptCode);
+                            if (!_oTrackingCodeIndex.ContainsKey(lsInstrumentationKey))
+                            {
+                                string lsJavscriptCode = _sMicrosoftApplicationInsightsHeadCodeFormat.Replace("[INSTRUMENTATIONKEY]", lsInstrumentationKey);
+                                _oTrackingCodeIndex.Add(lsInstrumentationKey, lsJavscriptCode);
+                            }
                         }
                     }
-                }
 
-                return _oTrackingCodeIndex[lsInstrumentationKey];
+                    return _oTrackingCodeIndex[lsInstrumentationKey];
+                }
             }
 
             return string.Empty;

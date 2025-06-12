@@ -31,6 +31,7 @@
 // <change date="5/18/2016" author="Brian A. Lakstins" description="Add test configuration">
 // <change date="6/5/2020" author="Brian A. Lakstins" description="Remove test configuration because it's in base class">
 // <change date="7/25/2023" author="Brian A. Lakstins" description="Updated for change to MaxAppLibrary">
+// <change date="6/12/2025" author="Brian A. Lakstins" description="Update for MaxApp maybe returning a null">
 // </changelog>
 #endregion
 
@@ -65,13 +66,16 @@ namespace MaxFactry.Module.App.Mvc4
         {
             //// Set the Google Analytics Id for the current application
             MaxFactry.Module.App.BusinessLayer.MaxAppEntity loAppEntity = MaxFactry.Module.App.BusinessLayer.MaxAppEntity.GetCurrent();
-            MaxFactry.General.PresentationLayer.MaxDesignLibrary.SetThemeName(loAppEntity.ThemeName);
-            if (loAppEntity.LastUpdateDate < DateTime.UtcNow.AddHours(-1))
+            if (null == loAppEntity)
             {
-                //// Update at most once per hour to indicate app is being used
-                loAppEntity.IsActive = false;
-                loAppEntity.IsActive = true;
-                loAppEntity.Update();
+                MaxFactry.General.PresentationLayer.MaxDesignLibrary.SetThemeName(loAppEntity.ThemeName);
+                if (loAppEntity.LastUpdateDate < DateTime.UtcNow.AddHours(-1))
+                {
+                    //// Update at most once per hour to indicate app is being used
+                    loAppEntity.IsActive = false;
+                    loAppEntity.IsActive = true;
+                    loAppEntity.Update();
+                }
             }
         }
 
