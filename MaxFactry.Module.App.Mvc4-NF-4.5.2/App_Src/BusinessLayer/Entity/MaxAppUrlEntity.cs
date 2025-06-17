@@ -46,6 +46,7 @@
 // <change date="6/2/2021" author="Brian A. Lakstins" description="Add Querystring handling">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="4/6/2025" author="Brian A. Lakstins" description="Use methods from base class.">
+// <change date="6/17/2025" author="Brian A. Lakstins" description="Update logging.">
 // </changelog>
 #endregion
 
@@ -232,6 +233,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
         {
             string lsLog = string.Empty;
             string lsCacheKey = this.GetCacheKey("LoadByUrl/" + loUrl.Host + "/" + loUrl.AbsolutePath + "/" + loUrl.Query);
+            lsLog += "CacheKey=" + lsCacheKey + "\r\n";
             MaxData loData = MaxCacheRepository.Get(this.GetType(), lsCacheKey, typeof(MaxData)) as MaxData;
             int lnR = MaxConvertLibrary.ConvertToInt(typeof(object), MaxCacheRepository.Get(this.GetType(), lsCacheKey + "MatchLevel", typeof(string)));
             if (null != loData && lnR > 0)
@@ -240,10 +242,11 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
             }
             else if (lnR < 0)
             {
+                lsLog += "ApplicationKey=" + MaxDataLibrary.GetApplicationKey() + "\r\n";
                 MaxEntityList loEntityList = this.LoadAllCache();
                 Guid loR = Guid.Empty;
                 int lnMatchLevelCurrent = 0;
-                lsLog += "Checking " + loEntityList.Count + " entities]\r\n";
+                lsLog += "Checking [" + loEntityList.Count + "] entities\r\n";
                 for (int lnE = 0; lnE < loEntityList.Count; lnE++)
                 {
                     MaxAppUrlEntity loEntity = (MaxAppUrlEntity)loEntityList[lnE];
@@ -357,7 +360,7 @@ namespace MaxFactry.Module.App.Mvc4.BusinessLayer
                     bool lbReported = MaxConvertLibrary.ConvertToBoolean(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopePersistent, lsSentKey));
                     if (!lbReported && loUrl.Host != "localhost" && !loUrl.Host.EndsWith("116vb.local"))
                     {
-                        MaxLogLibrary.Log(new MaxLogEntryStructure("LoadByUrl", MaxEnumGroup.LogError, "URL Match not found. {Url} {lsLog} {Environment}", new MaxException("AppUrl Match Error"), loUrl, lsLog, MaxFactry.Core.MaxLogLibrary.GetEnvironmentInformation()));
+                        MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "LoadByUrl", MaxEnumGroup.LogError, "URL Match not found. {Url} {lsLog} {Environment}", new MaxException("AppUrl Match Error"), loUrl, lsLog, MaxFactry.Core.MaxLogLibrary.GetEnvironmentInformation()));
                         MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopePersistent, lsSentKey, "true");
                     }
                 }

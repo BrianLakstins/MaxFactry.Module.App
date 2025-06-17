@@ -31,6 +31,7 @@
 // <change date="5/22/2020" author="Brian A. Lakstins" description="Update logging.  Removing caching because MaxAppUrlEntity already caches.">
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.  Try to prevent Stack Overflow">
+// <change date="6/17/2025" author="Brian A. Lakstins" description="Add caching for ApplicationKey based on Url.">
 // </changelog>
 #endregion
 
@@ -50,6 +51,8 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
     {
         private static readonly string ApplicationKeyForUrl = "_ApplicationKeyForUrl";
 
+        private static readonly string ApplicationKeyFromUrl = "_ApplicationKeyFromUrl";
+
         /// <summary>
         /// Gets the storage key used to separate the storage of data
         /// </summary>
@@ -58,11 +61,18 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
         public override string GetApplicationKey()
         {
             string lsR = base.GetApplicationKey();
-
             string lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl));
             if (null == lsApplicationKey || lsApplicationKey.Length == 0)
             {
-                lsApplicationKey = this.GetStorageKeyFromUrl(lsR);
+                lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl));
+                if (string.IsNullOrEmpty(lsApplicationKey))
+                {
+                    lsApplicationKey = this.GetStorageKeyFromUrl(lsR);
+                    if (!string.IsNullOrEmpty(lsApplicationKey))
+                    {
+                        MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl, lsApplicationKey);
+                    }
+                }
             }
 
             if (null != lsApplicationKey && lsApplicationKey.Length > 0)
@@ -98,6 +108,15 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
                 }
 
                 MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl, lsR);
+            }
+            else
+            {                
+                StackTrace loStackTrace = new StackTrace(true);
+                if (!loStackTrace.ToString().Contains("System.Web.Hosting.PipelineRuntime.InitializeApplication(IntPtr appContext)"))
+                {
+                    MaxException loException = new MaxException("GetStorageKeyFromUrl called with null Request.");
+                    MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetStorageKeyFromUrl", MaxEnumGroup.LogError, "GetStorageKeyFromUrl() called with null Request from {StackTrace}", loException, loStackTrace.ToString()));
+                }
             }
 
             return lsR;
