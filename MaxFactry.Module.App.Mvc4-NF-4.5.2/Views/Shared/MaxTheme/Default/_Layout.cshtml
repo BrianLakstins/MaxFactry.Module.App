@@ -19,6 +19,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@{Html.RenderAction("PartialHeadTitle", lsPartialController);}</title>
+    <script>
+        var psApplicationId = @Html.Encode(MaxFactry.Module.App.BusinessLayer.MaxAppEntity.GetCurrent().Id)
+    </script>
     @Html.MaxGetMicrosoftApplicationInsightsHead()
     @Html.MaxGetGoogleTagManagerHead()
     @Html.MaxGetClientToolHtml("HEAD")
@@ -29,13 +32,13 @@
     @Html.MaxGetGoogleTagManagerBody()
     @Html.MaxGetClientToolHtml("BODY")
     <div id="udHeaderContainer">
-    @{Html.RenderAction("PartialThemeHeader", lsPartialController);}
+        @{Html.RenderAction("PartialThemeHeader", lsPartialController);}
     </div>
     <div id="udBodyContainer" class="container">
-    @RenderBody()
+        @RenderBody()
     </div>
     <div id="udFooterContainer">
-    @{Html.RenderAction("PartialThemeFooter", lsPartialController);}
+        @{Html.RenderAction("PartialThemeFooter", lsPartialController);}
     </div>
     @Html.MaxGetClientToolHtml("END")
     @Html.MaxGetGoogleAnalytics()
@@ -43,3 +46,5 @@
 </body>
 </html>
 @RenderSection("PageEnd", required: false)
+<!--ApplicationId=@Html.Encode(MaxFactry.Module.App.BusinessLayer.MaxAppEntity.GetCurrent().Id)-->
+<!--MaxFactry.Module.App.Mvc4-Layout.cshtml-->

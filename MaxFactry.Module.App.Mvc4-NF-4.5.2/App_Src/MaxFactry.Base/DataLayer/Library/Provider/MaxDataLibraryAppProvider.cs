@@ -32,6 +32,7 @@
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.  Try to prevent Stack Overflow">
 // <change date="6/17/2025" author="Brian A. Lakstins" description="Add caching for ApplicationKey based on Url.">
+// <change date="6/21/2025" author="Brian A. Lakstins" description="Add seting process configuration for results of application key.">
 // </changelog>
 #endregion
 
@@ -49,9 +50,11 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
     /// </summary>
     public class MaxDataLibraryAppProvider : MaxDataLibraryGeneralAspNetProvider
     {
-        private static readonly string ApplicationKeyForUrl = "_ApplicationKeyForUrl";
+        private static readonly string ApplicationKeyForUrl = "_MaxDataLibraryAppProvider_ApplicationKeyForUrl";
 
-        private static readonly string ApplicationKeyFromUrl = "_ApplicationKeyFromUrl";
+        private static readonly string ApplicationKeyFromUrl = "_MaxDataLibraryAppProvider_ApplicationKeyFromUrl";
+
+        private static readonly string ApplicationKey = "_MaxDataLibraryAppProvider_ApplicationKey";
 
         /// <summary>
         /// Gets the storage key used to separate the storage of data
@@ -60,29 +63,37 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
         /// <returns>string used for the storage key</returns>
         public override string GetApplicationKey()
         {
-            string lsR = base.GetApplicationKey();
-            string lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl));
-            if (null == lsApplicationKey || lsApplicationKey.Length == 0)
+            string lsR = MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKey) as string;
+            if (null == lsR || lsR.Length == 0)
             {
-                lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl));
-                if (string.IsNullOrEmpty(lsApplicationKey))
+                lsR = base.GetApplicationKey();
+                string lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyForUrl));
+                if (null == lsApplicationKey || lsApplicationKey.Length == 0)
                 {
-                    lsApplicationKey = this.GetStorageKeyFromUrl(lsR);
-                    if (!string.IsNullOrEmpty(lsApplicationKey))
+                    lsApplicationKey = MaxConvertLibrary.ConvertToString(typeof(object), MaxConfigurationLibrary.GetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl));
+                    if (string.IsNullOrEmpty(lsApplicationKey))
                     {
-                        MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl, lsApplicationKey);
+                        lsApplicationKey = this.GetStorageKeyFromUrl(lsR);
+                        if (!string.IsNullOrEmpty(lsApplicationKey))
+                        {
+                            MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKeyFromUrl, lsApplicationKey);
+                        }
                     }
                 }
-            }
 
-            if (null != lsApplicationKey && lsApplicationKey.Length > 0)
-            {
-                lsR = lsApplicationKey;
-            }
+                if (null != lsApplicationKey && lsApplicationKey.Length > 0)
+                {
+                    lsR = lsApplicationKey;
+                }
 
-            if (lsR.Length == 0)
-            {
-                MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetApplicationKey", MaxEnumGroup.LogError, "GetApplicationKey() ended with blank key."));
+                if (lsR.Length == 0)
+                {
+                    MaxFactry.Core.MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetApplicationKey", MaxEnumGroup.LogError, "GetApplicationKey() ended with blank key."));
+                }
+                else
+                {
+                    MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, ApplicationKey, lsR);
+                }
             }
 
             return lsR;
@@ -112,7 +123,8 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
             else
             {                
                 StackTrace loStackTrace = new StackTrace(true);
-                if (!loStackTrace.ToString().Contains("System.Web.Hosting.PipelineRuntime.InitializeApplication(IntPtr appContext)"))
+                if (!loStackTrace.ToString().Contains("System.Web.Hosting.PipelineRuntime.InitializeApplication(IntPtr appContext)") &&
+                    !loStackTrace.ToString().Contains("System.Threading.ThreadHelper.ThreadStart()"))
                 {
                     MaxException loException = new MaxException("GetStorageKeyFromUrl called with null Request.");
                     MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetStorageKeyFromUrl", MaxEnumGroup.LogError, "GetStorageKeyFromUrl() called with null Request from {StackTrace}", loException, loStackTrace.ToString()));
