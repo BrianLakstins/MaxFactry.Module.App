@@ -111,7 +111,7 @@ namespace MaxFactry.General.AspNet.PresentationLayer.Provider
                         if (!Uri.TryCreate(lsRedirectUrl, UriKind.Relative, out loRedirectUrl))
                         {
                             loRedirectUrl = null;
-                            MaxLogLibrary.Log(new MaxLogEntryStructure("GetRedirectUrl", MaxEnumGroup.LogError, "Cannot create for url {lsRedirectUrl} for entity {loEntity} for url {loUrl}", lsRedirectUrl, loEntity, loUrl));
+                            MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetRedirectUrl", MaxEnumGroup.LogError, "Cannot create for url {lsRedirectUrl} for entity {loEntity} for url {loUrl}", lsRedirectUrl, loEntity, loUrl));
                         }
                     }
 
@@ -185,7 +185,7 @@ namespace MaxFactry.General.AspNet.PresentationLayer.Provider
             }
             catch (Exception loEUrl)
             {
-                MaxLogLibrary.Log(new MaxLogEntryStructure("GetRedirectUrl", MaxEnumGroup.LogError, "Error for url {loUrl} for entity {loEntity}", loEUrl, loUrl, loEntity));
+                MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetRedirectUrl", MaxEnumGroup.LogError, "Error for url {loUrl} for entity {loEntity}", loEUrl, loUrl, loEntity));
             }
 
             return lsR;

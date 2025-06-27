@@ -112,7 +112,7 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
                     Guid loUrlStorageKey = loEntity.AppId;
                     if (!Guid.Empty.Equals(loUrlStorageKey))
                     {
-                        MaxLogLibrary.Log(new MaxLogEntryStructure("GetStorageKeyFromUrl", MaxEnumGroup.LogInfo, "GetStorageKey from Url {loUrlStorageKey}{this.Request.Url} ", loUrlStorageKey, this.Request.Url));
+                        MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetStorageKeyFromUrl", MaxEnumGroup.LogInfo, "GetStorageKey from Url {loUrlStorageKey}{this.Request.Url} ", loUrlStorageKey, this.Request.Url));
                         lsR = loUrlStorageKey.ToString();
                         MaxConfigurationLibrary.SetValue(MaxEnumGroup.ScopeProcess, MaxFactryLibrary.MaxStorageKeyName, lsR);
                     }
