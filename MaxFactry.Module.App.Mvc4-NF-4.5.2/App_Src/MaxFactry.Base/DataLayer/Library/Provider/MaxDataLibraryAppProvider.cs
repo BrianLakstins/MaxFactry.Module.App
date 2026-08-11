@@ -32,7 +32,8 @@
 // <change date="3/31/2024" author="Brian A. Lakstins" description="Updated for changes to dependency classes.">
 // <change date="6/12/2025" author="Brian A. Lakstins" description="Update for ApplicationKey.  Try to prevent Stack Overflow">
 // <change date="6/17/2025" author="Brian A. Lakstins" description="Add caching for ApplicationKey based on Url.">
-// <change date="6/21/2025" author="Brian A. Lakstins" description="Add seting process configuration for results of application key.">
+// <change date="6/21/2025" author="Brian A. Lakstins" description="Add setting process configuration for results of application key.">
+// <change date="8/11/2026" author="Brian A. Lakstins" description="Remove exception for getting storage key from url.">
 // </changelog>
 #endregion
 
@@ -126,8 +127,7 @@ namespace MaxFactry.Base.DataLayer.Library.Provider
                 if (!loStackTrace.ToString().Contains("System.Web.Hosting.PipelineRuntime.InitializeApplication(IntPtr appContext)") &&
                     !loStackTrace.ToString().Contains("System.Threading.ThreadHelper.ThreadStart()"))
                 {
-                    MaxException loException = new MaxException("GetStorageKeyFromUrl called with null Request.");
-                    MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetStorageKeyFromUrl", MaxEnumGroup.LogError, "GetStorageKeyFromUrl() called with null Request from {StackTrace}", loException, loStackTrace.ToString()));
+                    MaxLogLibrary.Log(new MaxLogEntryStructure(this.GetType(), "GetStorageKeyFromUrl", MaxEnumGroup.LogDebug, "GetStorageKeyFromUrl() called with null Request from {StackTrace}", loStackTrace.ToString()));
                 }
             }
 
