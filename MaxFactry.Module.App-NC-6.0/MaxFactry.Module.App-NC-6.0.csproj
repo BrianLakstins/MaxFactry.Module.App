@@ -5,9 +5,9 @@
     <RootNamespace>MaxFactry.Module.App</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <Version>1.0.26.33</Version>
-	  <AssemblyVersion>1.0.26.33</AssemblyVersion>
-	  <FileVersion>2026.08.11.01</FileVersion>
+	  <Version>1.0.26.36</Version>
+	  <AssemblyVersion>1.0.26.36</AssemblyVersion>
+	  <FileVersion>2026.09.25.01</FileVersion>
 	  <SignAssembly>True</SignAssembly>
 	  <AssemblyOriginatorKeyFile>MaxFactry.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
